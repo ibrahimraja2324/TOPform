@@ -1,0 +1,31 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.halfpage {
+    height: 100%;
+}
+
+.halfpage:nth-child(1) {
+    width: 33%;
+}
+
+.halfpage:nth-child(2) {
+    width: 66%;
+}
+
+.halfpage img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
