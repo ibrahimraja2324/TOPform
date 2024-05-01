@@ -4,45 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <script src="form.js"></script>
     <title>Document</title>
 </head>
 <body>
     <div class="container">
     <div class="halfpage">
-        <img src="images/halie-west-25xggax4bSA-unsplash.jpg" alt="image of leaves">
+        <img id="leaves" src="images/halie-west-25xggax4bSA-unsplash.jpg" alt="image of leaves">
+        <div class="odincont">
+            <img id="odinlogo" src="images/odin-lined.png" alt="odin logo">
+            <h1>ODIN</h1>
+        </div>
     </div>
     <div class="halfpage">
         <section class="thirdsofhalf"> 
             <p>
-                THis is not a real online service! You know you need something like this in your life to help you realioe your deepest dreams. SIgn up nopw to get started
+                This is not a real online service! You know you need something like this in your life to help you realioe your deepest dreams. SIgn up nopw to get started
             </p>
             <p>
                 You Know you want to.
             </p>
         </section>
         <section class="thirdsofhalf">
+            <form id="signupform" action="https://httpbin.org/post" method="post">
             <p>
                 Lets do this
             </p>
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name">
-            <label for="last-name">Last Name</label>
-            <input type="text" name="last-name" id="last-name">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <label for="phone-number">Phone Number</label>
-            <input type="tel" name="phone-number" id="phone-number">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-            <label for="password">Confirm Password</label>
-            <input type="password" name="password" id="password">
+            <div class="names">
+                <div class="contfirst">
+                    <label for="first-name">First Name</label>
+                    <input type="text" name="first-name" id="first-name" required>
+                </div>
+                <div class="contlast">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" required>
+                </div>
+            </div>
+            <div class="contactdet">
+                <div class="contemail">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" pattern="/^([a-z\d\.-]+@[a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/" required>
+                </div>
+                <div class="conttel">
+                    <label for="phone-number">Phone Number</label>
+                    <input type="tel" name="phone-number" id="phone-number" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                </div>
+            </div>
+            <div class="passconf">
+                <div class="contpass">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="contpassconf">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="password" id="passwordconf" required>
+                </div>
+            </div>
+
 
         </section>
         <section class="thirdsofhalf">
-            <button>Create Account</button>
+            <button type="submit">Create Account</button>
             <p>Already have an account? <span>Log in</span></p>
         </section>
+    </form>
     </div>
 </div>
+<script>
+    document.querySelector('button[type="submit"]').onclick = function() {
+        let password = document.getElementById("password").value;
+        let passwordConf = document.getElementById("passwordconf").value;
+        
+        if (password === "") {
+            alert("Password field is empty.");
+            return false;
+        } else if (password !== passwordConf) {
+            alert("Passwords do not match.");
+            return false;
+        } else {
+            alert("Passwords match.");
+            return true;
+        }
+    };
+</script>
 </body>
 </html>
